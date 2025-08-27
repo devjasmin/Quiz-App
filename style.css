@@ -26,7 +26,7 @@
 }
 
 .answer.correct {
-  background-color: greenyellow;
+  background-color: rgb(47, 255, 116);
 }
 
 .answer.incorrect {

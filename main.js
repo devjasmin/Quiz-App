@@ -14,6 +14,16 @@ const questions = [
     answer: ["Python", "C++", "Java", "HTML"],
     correct: 3, // Index im Array -> HTML
   },
+  {
+    frage: "Welches ist die giftigste Schlange der Welt?",
+    answer: ["Python", "Inland Taipan", "schwarze Mamba", "Natter"],
+    correct: 1, // Index im Array -> Inland Taipan
+  },
+  {
+    frage: "Welches ist das größte Tier der Welt?",
+    answer: ["Hammerhai", "Delphin", "Blauwal", "Orca"],
+    correct: 2, // Index im Array -> Blauwal
+  },
 ];
 
 // neue Frage holen und anzeigen
@@ -25,19 +35,21 @@ function displayQuestion() {
   // Frage ins HTML einsetzen
   document.querySelector(".question-title").textContent = currentQuestion.frage;
 
-  // Antworten in Buttons schreiben
+  // Antworten in Buttons schreiben und resetten
   const buttons = document.querySelectorAll(".answer");
   buttons.forEach((btn, i) => {
     btn.textContent = currentQuestion.answer[i];
+    btn.classList.remove("correct", "incorrect");
+    btn.disabled = false;
     btn.onclick = () => checkAnswer(i);
   });
-}
 
-function checkAnswer(selectedIndex) {
-  if (selectedIndex === currentQuestion.correct) {
-    alert("✅ Richtig!");
-  } else {
-    alert("❌ Falsch!");
+  function checkAnswer(selectedIndex) {
+    if (selectedIndex === currentQuestion.correct) {
+      buttons[selectedIndex].classList.add("correct");
+    } else {
+      buttons[selectedIndex].classList.add("incorrect");
+    }
   }
 }
 
@@ -48,14 +60,7 @@ function solution() {
   );
 }
 
-// let currentQuestionIndex = 0;
-// let currentQuestion = questions[currentQuestionIndex];
-
-// console.log(currentQuestion.frage);
-// console.log(currentQuestion.answer[currentQuestion.correct]);
-
 function nextQuestion() {
   displayQuestion();
-
-  window.onload = displayQuestion();
 }
+window.onload = displayQuestion();

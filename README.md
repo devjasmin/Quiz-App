@@ -11,4 +11,4 @@ Lösung wird angezeigt(grün hinterlegt).
 - **Logik:** JavaScript
 
 Live-Demo:
-https://github.com/devjasmin/Quiz-App
+https://devjasmin.github.io/Quiz-App/
